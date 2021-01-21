@@ -1,15 +1,17 @@
-import { Button, message } from "antd";
 import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import Admin from "./pages/admin/admin";
+import Login from "./pages/login/login";
 export default class App extends Component {
-  handleClick = () => {
-    message.success("heelo, would");
-  };
   render() {
     return (
-      <Button type="primary" onClick={this.handleClick}>
-        小老板
-      </Button>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/" component={Admin}></Route>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
