@@ -1,6 +1,6 @@
 import "./login.less";
 import React, { Component } from "react";
-import logo from "./images/logo.png";
+import logo from "../../assets/images/logo.png";
 import { Form, Input, Button, Checkbox, message } from "antd";
 import { reqLogin } from "../../api";
 import memoryUtils from "../../utils/memoryUtils";
