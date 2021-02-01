@@ -60,7 +60,7 @@ class LeftNav extends Component {
         if (cItem) this.openKeys = item.key;
         // pre add <Submenu></Submenu>
         pre.push(
-          <SubMenu key="sub1" title={item.title} icon={item.icon}>
+          <SubMenu key={item.key} title={item.title} icon={item.icon}>
             {/* resively call this function to  */}
             <Link to={item.key}></Link>
             {this.getMenuNodes(item.children)}
@@ -71,7 +71,7 @@ class LeftNav extends Component {
     }, []);
   };
   // before render execute, prepare data for first render()
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.menuNodes = this.getMenuNodes(menuList);
   }
   render() {
