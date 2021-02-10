@@ -27,21 +27,6 @@ class Header extends Component {
    * @param {*} getTitle
    * @return {*}
    */
-  // getTitle = () => {
-  //   // get path value from location value
-  //   const path = this.props.location.pathname;
-  //   menuList.forEach((item) => {
-  //     // if we find the titel is in the main menu instead of sub menu, direct to that title
-  //     if (item.key === path) return item.title;
-  //     // check all sub item in the children
-  //     if (item.children) {
-  //       // check all item
-  //       const cItem = item.children.find((cItem) => cItem.key === path);
-  //       // if we find it did have the item, we get he title from it
-  //       if (cItem) return cItem.title;
-  //     }
-  //   });
-  // };
   getTitle = () => {
     // get path value from location value
     const path = this.props.location.pathname;
@@ -62,7 +47,7 @@ class Header extends Component {
   /**
    * @description: a function help user to logout, clear all user storage
    * @param {*} logout
-   * @return {*}
+   *
    */
   logout = () => {
     confirm({
