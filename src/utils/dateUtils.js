@@ -13,8 +13,6 @@ export function formateDate(time) {
     " " +
     date.getHours() +
     ":" +
-    date.getMinutes() +
-    ":" +
-    date.getSeconds()
+    date.getMinutes()
   );
 }

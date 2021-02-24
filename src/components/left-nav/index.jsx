@@ -54,8 +54,12 @@ class LeftNav extends Component {
         );
       }
       if (item.children) {
+        // use path to contain current path
+        const path = this.props.location.pathname;
         // use array find to find a current route children item
-        const cItem = item.children.find((cItem) => cItem.key === this.path);
+        const cItem = item.children.find(
+          (cItem) => path.indexOf(cItem.key) === 0
+        );
         // if we have this chilren, then we assign openkeys to fater node (which is open submenu)
         if (cItem) this.openKeys = item.key;
         // pre add <Submenu></Submenu>
@@ -75,8 +79,10 @@ class LeftNav extends Component {
     this.menuNodes = this.getMenuNodes(menuList);
   }
   render() {
-    // const menuNodes = X
-    const path = this.props.location.pathname;
+    // use path to contain current path
+    let path = this.props.location.pathname;
+    // check if the path current have /product route, if yes, we just direct to /product tab
+    if (path.indexOf("/product") === 0) path = "/product";
     const openKeys = this.openKeys;
     const menuNodes = this.menuNodes;
     return (

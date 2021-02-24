@@ -40,21 +40,48 @@ export default class Category extends Component {
   };
 
   addCategory = () => {
-    console.log("addCategory");
+    // execute form validator, only validator we execute following step
+    this.form.current.validateFields().then(async (err, values) => {
+      if (!err) {
+        // close modal
+        this.setState({
+          showStatus: 0,
+        });
+        const { categoryId, changedName } = values;
+        // clear all form input
+        this.form.current.resetFields();
+        const result = await reqAddCategory({
+          parentId: categoryId,
+          categoryName: changedName,
+        });
+        // refresh categorys to get new list
+        if (result.status === 0) {
+          // if the current list is also the add new category, we refresh the page
+          if (categoryId === this.state.parentId) this.getCategorys();
+          // if the current list is add new category to main list, we only refresh to get the new list
+          if (categoryId === "0") this.getCategorys("0");
+        }
+      }
+    });
   };
 
-  updateCategory = async () => {
-    // // close modal
-    this.setState({
-      showStatus: 0,
+  updateCategory = () => {
+    // execute form validator, only validator we execute following step
+    this.form.current.validateFields().then(async (err, values) => {
+      if (!err) {
+        // close modal
+        this.setState({
+          showStatus: 0,
+        });
+        const categoryId = this.category._id;
+        const { categoryName } = values;
+        // clear all form input
+        this.form.current.resetFields();
+        const result = await reqUpdateCategory(categoryId, categoryName);
+        // refresh categorys to get new list
+        if (result.status === 0) this.getCategorys();
+      }
     });
-    const categoryId = this.category._id;
-    const categoryName = this.form.current.getFieldValue("changedName");
-    // clear all form input
-    this.form.current.resetFields();
-    const result = await reqUpdateCategory(categoryId, categoryName);
-    // refresh categorys to get new list
-    if (result.status === 0) this.getCategorys();
   };
 
   /**
@@ -98,16 +125,16 @@ export default class Category extends Component {
       },
     ];
   };
-
   /**
    * @description: This is a function get main / sub Categorys list from the backend server
-   * @param {*} getCategorys
+   * @param {*} parentId
    * @return {*}
    */
-  getCategorys = async () => {
+  getCategorys = async (parentId) => {
     // before we get the result from the backend, we satrt loading
     this.setState({ loading: true });
-    const { parentId } = this.state;
+    // if the parameter parentId is not null, we still keep use parentId, otherwise, we get parentId from state
+    parentId = parentId || this.state.parentId;
     const result = await reqCategorys(parentId);
     // after we get the result from the backend, we stop loading
     this.setState({ loading: false });
@@ -132,7 +159,9 @@ export default class Category extends Component {
   showSubCategorys = (categorys) => {
     this.setState(
       { parentId: categorys._id, parentName: categorys.name },
+      // execute after render() and update state
       () => {
+        // display second Categorys
         this.getCategorys();
       }
     );
@@ -200,7 +229,12 @@ export default class Category extends Component {
           onOk={this.addCategory}
           onCancel={this.handleCancel}
         >
-          <AddForm></AddForm>
+          <AddForm
+            categorys={categorys}
+            setForm={(form) => {
+              this.form = form;
+            }}
+          ></AddForm>
         </Modal>
         <Modal
           title="Update Category"

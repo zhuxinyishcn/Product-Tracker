@@ -26,6 +26,9 @@ export default class UpdateForm extends Component {
           name="changedName"
           label="New Category Name"
           initialValue={""}
+          rules={[
+            { required: true, message: "Please input your new category name!" },
+          ]}
         >
           <Input placeholder={categoryName} />
         </Form.Item>

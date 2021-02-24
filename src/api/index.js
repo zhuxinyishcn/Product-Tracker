@@ -40,3 +40,23 @@ export const reqAddCategory = ({ parentId, categoryName }) =>
 // a function to modify Categorys to the list
 export const reqUpdateCategory = (categoryId, categoryName) =>
   ajax("/manage/category/update", { categoryId, categoryName }, "POST");
+
+// a function to get a list of item from a certain page number
+export const reqProductList = (pageNum, pageSize) =>
+  ajax("/manage/product/list", { pageNum, pageSize });
+
+// a function to get a list of item from a certain page number using a search name searchType: productName/productDescription
+export const reqSearchProduct = (pageNum, pageSize, searchName, searchType) =>
+  ajax("/manage/product/search", {
+    pageNum,
+    pageSize,
+    [searchType]: searchName,
+  });
+
+// a function to get the category from backend use category id
+export const reqCategoryName = (categoryId) =>
+  ajax("/manage/category/info", { categoryId });
+
+// a function to update the product status though product id
+export const reqUpdateStatus = (productId, status) =>
+  ajax("/manage/product/updateStatus", { productId, status }, "POST");
