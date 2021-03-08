@@ -87,7 +87,7 @@ class Header extends Component {
     return (
       <div className="header">
         <div className="header-top">
-          <span>welcom, {username}</span>
+          <span>welcome, {username}</span>
           <LinkButtom onClick={this.logout}>Logout</LinkButtom>
         </div>
         <div className="header-bottom">

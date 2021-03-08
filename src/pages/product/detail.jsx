@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Card, List } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import InfiniteScroll from "react-infinite-scroller";
 import { reqCategoryName } from "../../api";
 
 export default function ProductDetail(props) {
+  const [mainCategoryName, setMainCategoryName] = useState("");
+  const [childCategoryName, setChildCategoryName] = useState("");
   const [productDetail, setProductDetail] = useState([]);
-  const [mainCategoryName, setmainCategoryName] = useState("");
-  const [childCategoryName, setchildCategoryName] = useState("");
 
   useEffect(() => {
-    setProductDetail(getProductDetail());
     getCategory();
+    getProductDetail();
   }, [mainCategoryName]);
 
   async function getCategory() {
@@ -21,7 +20,7 @@ export default function ProductDetail(props) {
     if (pCategoryId === "0") {
       const result = await reqCategoryName(categoryId);
       // check the return result
-      if (result.status === 0) setmainCategoryName(result.data.name);
+      if (result.status === 0) setMainCategoryName(result.data.name);
     }
     // if the category indicate it is not cate a child category, we first find the main category, then search in the second category
     if (pCategoryId !== "0") {
@@ -30,18 +29,17 @@ export default function ProductDetail(props) {
         reqCategoryName(pCategoryId),
         reqCategoryName(categoryId),
       ]);
+
       // check the return result
-      if (result.status === 0) {
-        setmainCategoryName(result[0].data.name);
-        setchildCategoryName(result[1].data.name);
-        console.log(mainCategoryName, childCategoryName);
+      if (result[0].status === 0) {
+        setMainCategoryName(result[0].data.name);
+        setChildCategoryName(result[1].data.name);
       }
     }
   }
 
   function getProductDetail() {
     const { product } = props.location.state;
-
     // load data into correct data form
     const productDetail = [
       {
@@ -69,7 +67,7 @@ export default function ProductDetail(props) {
         context: "some picuture~",
       },
     ];
-    return productDetail;
+    setProductDetail(productDetail);
   }
 
   return (

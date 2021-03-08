@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Table, Card, Input, Select, Switch, message } from "antd";
-import { AudioOutlined } from "@ant-design/icons";
+import { Table, Card, Input, Select, Switch, message, Button } from "antd";
+import { AudioOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import LinkButtom from "../../components/link-buttom";
 import {
   reqProductList,
@@ -95,7 +95,13 @@ export default class Home extends Component {
             >
               Detail
             </LinkButtom>
-            <LinkButtom>Update</LinkButtom>
+            <LinkButtom
+              onClick={() =>
+                this.props.history.push("/product/addupdate", { product })
+              }
+            >
+              Update
+            </LinkButtom>
           </span>
         ),
       },
@@ -115,12 +121,21 @@ export default class Home extends Component {
     this.initColumns();
   }
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.getProducts(1);
   }
 
   render() {
     const { products, total, loading } = this.state;
+    const extra = (
+      <Button
+        type="primary"
+        onClick={() => this.props.history.push("/product/addupdate")}
+      >
+        <PlusCircleOutlined />
+        Add Product
+      </Button>
+    );
     const title = (
       <span>
         <Select
@@ -149,7 +164,7 @@ export default class Home extends Component {
     );
 
     return (
-      <Card title={title}>
+      <Card title={title} extra={extra}>
         <Table
           bordered
           rowKey="_id"

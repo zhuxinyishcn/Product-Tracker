@@ -60,3 +60,11 @@ export const reqCategoryName = (categoryId) =>
 // a function to update the product status though product id
 export const reqUpdateStatus = (productId, status) =>
   ajax("/manage/product/updateStatus", { productId, status }, "POST");
+
+// a function take image name and delete send a image delete request.
+export const reqDeleteImg = (name) =>
+  ajax("/manage/img/delete", { name }, "POST");
+
+// This is a function that take product object to add / update a product in the backend
+export const reqAddOrUpdateProduct = (product) =>
+  ajax("/manage/product/" + (product._id ? "update" : "add"), product, "POST");

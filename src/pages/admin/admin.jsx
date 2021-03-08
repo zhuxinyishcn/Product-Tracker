@@ -20,7 +20,7 @@ export default class Admin extends Component {
     // if user not login, then we redict  to login page
     if (!user || !user._id) return <Redirect to="/login"></Redirect>;
     return (
-      <Layout style={{ height: "100%" }}>
+      <Layout style={{ minHeight: "100%" }}>
         <Sider>
           <LeftNav></LeftNav>
         </Sider>

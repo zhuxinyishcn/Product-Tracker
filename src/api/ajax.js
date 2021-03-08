@@ -25,8 +25,8 @@ export default function ajax(url, data = {}, type = "GET") {
     // POST request
     if (type === "POST") axioPromise = axios.post(url, data);
     axioPromise
-      // if we success execute the requestm we use resolve
       .then((response) => {
+        // if we success execute the requestm we use resolve
         resolve(response.data);
       })
       // insead of using reject(), if enconter a exception, we prompt a error message to inform user
