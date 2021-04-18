@@ -1,3 +1,4 @@
+/* eslint-disable no-template-curly-in-string */
 import React, { useState, useRef, useEffect } from "react";
 import {
   Card,
@@ -52,7 +53,7 @@ export default function ProductAddUpdate(props) {
   }, [options, product.product]);
 
   const validateMessages = {
-    required: "'${name}' is required",
+    required: "'${name}' is required!",
     number: {
       range: "${label} must be between ${min} and ${max}",
     },

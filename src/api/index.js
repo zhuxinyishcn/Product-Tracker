@@ -68,3 +68,14 @@ export const reqDeleteImg = (name) =>
 // This is a function that take product object to add / update a product in the backend
 export const reqAddOrUpdateProduct = (product) =>
   ajax("/manage/product/" + (product._id ? "update" : "add"), product, "POST");
+
+// This is a  function that send a request to the list of roles
+export const reqRoles = () => ajax("/manage/role/list");
+
+// This is a  function that send a request to the add a role
+export const reqAddRoles = (roleName) =>
+  ajax("/manage/role/add", { roleName }, "POST");
+
+// This is a  function that send a request to the update a role
+export const reqUpdateRoles = (role) =>
+  ajax("/manage/role/update", role, "POST");
