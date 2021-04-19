@@ -1,9 +1,4 @@
-import React, {
-  useImperativeHandle,
-  forwardRef,
-  useEffect,
-  useState,
-} from "react";
+import React, { useImperativeHandle, forwardRef, useEffect, useState } from "react";
 import { Form, Input, Tree } from "antd";
 import PropTypes from "prop-types";
 import menuList from "../../config/menuConfig";
@@ -35,6 +30,9 @@ const WrappedForm = forwardRef(({ role }, ref) => {
     setCheckedKeys(menus);
   }, [role]);
 
+  useEffect(() => {
+    console.log("dhuias");
+  });
   // function getMenuList(menuList) {
   //   return menuList.reduce((prev, item) => {
   //     // if no children in the array, simplely add to array end

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import { Card, Button, Modal, Table, message } from "antd";
 import { PAGE_SIZE } from "../../utils/constants";
 import { reqRoles, reqAddRoles, reqUpdateRoles } from "../../api";
@@ -13,7 +13,9 @@ export default function Role() {
   const [role, setRole] = useState({});
   const [showAdd, setShowAdd] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
-  const addFormValue = useRef();
+  const FormValues = useRef();
+  // This is a useMemo hook to optimize the render performance (ex: Pure Component)
+  const authForm = useMemo(() => <AuthForm ref={FormValues} role={role}></AuthForm>, [role]);
 
   useEffect(() => {
     getRoles();
@@ -53,7 +55,7 @@ export default function Role() {
   }
 
   async function addRole() {
-    const form = addFormValue.current.formInstance;
+    const form = FormValues.current.formInstance;
     // form validate Fields, only process when all rule passed!
     try {
       setShowAdd(false);
@@ -78,7 +80,7 @@ export default function Role() {
   async function updateRole() {
     setShowAuth(false);
     // receive checkedKeys from auth Form
-    const authCheckedKeys = addFormValue.current.authCheckedKeys;
+    const authCheckedKeys = FormValues.current.authCheckedKeys;
     // get current selected user and update with new menu
     role.menus = authCheckedKeys;
     role.auth_time = Date.now();
@@ -144,7 +146,7 @@ export default function Role() {
           setShowAuth(false);
         }}
       >
-        <AddForm ref={addFormValue}></AddForm>
+        <AddForm ref={FormValues}></AddForm>
       </Modal>
       <Modal
         title="Set Auth For This Role"
@@ -154,7 +156,8 @@ export default function Role() {
           setShowAuth(false);
         }}
       >
-        <AuthForm ref={addFormValue} role={role}></AuthForm>
+        {/* This is use useMemo to optimize render performance (ex: Pure Component) */}
+        {authForm}
       </Modal>
     </Card>
   );
