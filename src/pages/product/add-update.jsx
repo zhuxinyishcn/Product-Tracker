@@ -1,14 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 import React, { useState, useRef, useEffect } from "react";
-import {
-  Card,
-  Form,
-  Button,
-  Input,
-  InputNumber,
-  Cascader,
-  message,
-} from "antd";
+import { Card, Form, Button, Input, InputNumber, Cascader, message } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { reqCategorys, reqAddOrUpdateProduct } from "../../api";
 import WrappedPicturesWall from "./pictures-wall";
@@ -40,9 +32,7 @@ export default function ProductAddUpdate(props) {
       const category = [];
       const { pCategoryId, categoryId } = product.product;
       if (pCategoryId === "0") {
-        const categoryName = options.find(
-          (option) => option.value === categoryId
-        );
+        const categoryName = options.find((option) => option.value === categoryId);
         if (categoryName) {
           category.push(categoryName.value);
           setCategoryName(category);
@@ -72,10 +62,7 @@ export default function ProductAddUpdate(props) {
     console.log(values);
     const { Category, Description, Price, name } = values;
     console.log(Category, Description, Price, name);
-    console.log(
-      richTextEditor.current.getHtmlContext(),
-      pictureWall.current.getFileList()
-    );
+    console.log(richTextEditor.current.getHtmlContext(), pictureWall.current.getFileList());
 
     // initialize two category variable
     let categoryId = "";
@@ -100,7 +87,7 @@ export default function ProductAddUpdate(props) {
       detail: detail,
       imgs: imgs,
     };
-    // if (Object.keys(product).length) console.log(product);
+
     console.log(product);
     const result = await reqAddOrUpdateProduct(product);
     if (result.status === 0) message.success("Add Product Success");
@@ -189,39 +176,20 @@ export default function ProductAddUpdate(props) {
           label="Price"
           rules={[{ type: "number", min: 0, required: true }]}
         >
-          <InputNumber
-            formatter={(value) =>
-              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            }
-          />
+          <InputNumber formatter={(value) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} />
         </Form.Item>
-        <Form.Item
-          name={["Category"]}
-          rules={[{ required: true }]}
-          label="Category"
-        >
-          <Cascader
-            options={options}
-            loadData={loadData}
-            changeOnSelect
-            value={categoryName}
-          />
+        <Form.Item name={["Category"]} rules={[{ required: true }]} label="Category">
+          <Cascader options={options} loadData={loadData} changeOnSelect value={categoryName} />
         </Form.Item>
         <Form.Item
           initialValue={product.price}
           name={["user", "RichTextEditor"]}
           label="Product Detail"
         >
-          <RichTextEditor
-            ref={richTextEditor}
-            detail={product.product.detail}
-          ></RichTextEditor>
+          <RichTextEditor ref={richTextEditor} detail={product.product.detail}></RichTextEditor>
         </Form.Item>
         <Form.Item name={["Preview"]} label="Picture Preview">
-          <WrappedPicturesWall
-            ref={pictureWall}
-            imgs={product.product.imgs}
-          ></WrappedPicturesWall>
+          <WrappedPicturesWall ref={pictureWall} imgs={product.product.imgs}></WrappedPicturesWall>
         </Form.Item>
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
           <Button type="primary" htmlType="submit">

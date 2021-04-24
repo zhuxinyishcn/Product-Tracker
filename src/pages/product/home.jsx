@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import { Table, Card, Input, Select, Switch, message, Button } from "antd";
 import { AudioOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import LinkButtom from "../../components/link-buttom";
-import {
-  reqProductList,
-  reqSearchProduct,
-  reqUpdateStatus,
-} from "../../api/index";
+import { reqProductList, reqSearchProduct, reqUpdateStatus } from "../../api/index";
 import { PAGE_SIZE } from "../../utils/constants";
 
 const { Option } = Select;
@@ -32,13 +28,7 @@ export default class Home extends Component {
     const { searchType, searchValue } = this.state;
     let result;
     // check if we have search value
-    if (searchValue)
-      result = await reqSearchProduct(
-        pageNum,
-        PAGE_SIZE,
-        searchValue,
-        searchType
-      );
+    if (searchValue) result = await reqSearchProduct(pageNum, PAGE_SIZE, searchValue, searchType);
     if (!searchValue) result = await reqProductList(pageNum, PAGE_SIZE);
     this.setState({ loading: false });
     if (result.status === 0) {
@@ -77,7 +67,6 @@ export default class Home extends Component {
                   this.updateStatus(product._id, status);
                 }}
               />
-              <span></span>
             </span>
           );
         },
@@ -88,18 +77,10 @@ export default class Home extends Component {
         key: "action",
         render: (product) => (
           <span>
-            <LinkButtom
-              onClick={() =>
-                this.props.history.push("/product/detail", { product })
-              }
-            >
+            <LinkButtom onClick={() => this.props.history.push("/product/detail", { product })}>
               Detail
             </LinkButtom>
-            <LinkButtom
-              onClick={() =>
-                this.props.history.push("/product/addupdate", { product })
-              }
-            >
+            <LinkButtom onClick={() => this.props.history.push("/product/addupdate", { product })}>
               Update
             </LinkButtom>
           </span>
@@ -128,10 +109,7 @@ export default class Home extends Component {
   render() {
     const { products, total, loading } = this.state;
     const extra = (
-      <Button
-        type="primary"
-        onClick={() => this.props.history.push("/product/addupdate")}
-      >
+      <Button type="primary" onClick={() => this.props.history.push("/product/addupdate")}>
         <PlusCircleOutlined />
         Add Product
       </Button>
@@ -155,9 +133,7 @@ export default class Home extends Component {
           allowClear
           style={{ width: 420, margin: "0 10px" }}
           suffix={<AudioOutlined style={{ color: "#1890ff" }} />}
-          onChange={(event) =>
-            this.setState({ searchValue: event.target.value })
-          }
+          onChange={(event) => this.setState({ searchValue: event.target.value })}
           onSearch={() => this.getProducts(1)}
         />
       </span>
@@ -175,6 +151,7 @@ export default class Home extends Component {
           }}
           loading={loading}
           pagination={{
+            current: this.pageNum,
             showSizeChanger: true,
             showQuickJumper: true,
             total,

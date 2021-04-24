@@ -166,3 +166,10 @@ Website URL: http://23232323.love-neu.com
 PS. unl 的学妹似乎去了 usc, 可以蹲一波
 PPS. 群里好看的小姐姐似乎蛮多的, 趁现在下手还来得及哈哈, 过去了估计都被吃了哈哈
 PPPS. 我认识了些学长和在读, 之后约了他们 zoom 问问题, 你有啥想问虾图的我也可以顺便问问 -->
+
+
+### Modis 问题
+1. recurtier process, date
+2. coop? 
+3. backend technologu
+4. team tech perfer

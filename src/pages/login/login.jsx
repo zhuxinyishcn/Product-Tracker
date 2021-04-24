@@ -27,8 +27,7 @@ export default class Login extends Component {
       console.log("Failed:", errorInfo);
     };
     // check if user login before, if not then redict to login page, other
-    if (memoryUtils.user && memoryUtils.user._id)
-      return <Redirect to="/"></Redirect>;
+    if (memoryUtils.user && memoryUtils.user._id) return <Redirect to="/"></Redirect>;
     return (
       <div className="login">
         <header className="login-header">
@@ -70,8 +69,7 @@ export default class Login extends Component {
                 },
                 {
                   pattern: /^[0-9A-Za-z_]+$/,
-                  message:
-                    "Please onstruct with characters, numbers or underscore !",
+                  message: "Please onstruct with characters, numbers or underscore !",
                 },
               ]}
             >
@@ -95,14 +93,10 @@ export default class Login extends Component {
                       return Promise.reject("Please input your password!");
                     }
                     if (value.length < 4) {
-                      return Promise.reject(
-                        "Please have a password at least have 4 characters!"
-                      );
+                      return Promise.reject("Please have a password at least have 4 characters!");
                     }
                     if (value.length > 12) {
-                      return Promise.reject(
-                        "Please have a password at most have 12 characters!"
-                      );
+                      return Promise.reject("Please have a password at most have 12 characters!");
                     }
                     if (!/^[0-9A-Za-z_]+$/.test(value)) {
                       return Promise.reject(

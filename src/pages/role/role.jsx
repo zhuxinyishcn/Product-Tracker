@@ -130,6 +130,10 @@ export default function Role() {
         rowSelection={{
           type: "radio",
           selectedRowKeys: [role._id],
+          // call back function when role selected
+          onSelect: (role) => {
+            setRole(role);
+          },
         }}
         onRow={onRowClick}
         bordered
