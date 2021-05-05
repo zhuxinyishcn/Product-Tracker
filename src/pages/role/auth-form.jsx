@@ -30,45 +30,45 @@ const WrappedForm = forwardRef(({ role }, ref) => {
     setCheckedKeys(menus);
   }, [role]);
 
-  // function getMenuList(menuList) {
-  //   return menuList.reduce((prev, item) => {
-  //     // if no children in the array, simplely add to array end
-  //     if (!item.children) prev.push({ key: item.key, title: item.title });
-  //     // if there is child in tree we process it first
-  //     if (item.children) {
-  //       // update previous array with concat new array
-  //       prev.push({
-  //         key: item.key,
-  //         title: item.title,
-  //         // recursively call reduceMap to update all children
-  //         children: getMenuList(item.children),
-  //       });
-  //     }
-  //     return prev;
-  //   }, []);
-  // }
-
-  /**
-   * @description: This is another way to genrate menu, it will add children node for each parent node
-   * @param {*} menuList
-   * @return {*}
-   */
   function getMenuList(menuList) {
     return menuList.reduce((prev, item) => {
       // if no children in the array, simplely add to array end
-      prev.push({ key: item.key, title: item.title });
+      if (!item.children) prev.push({ key: item.key, title: item.title });
       // if there is child in tree we process it first
-      if (item.children)
-        // update previous menuNode with concat new children Node
+      if (item.children) {
+        // update previous array with concat new array
         prev.push({
-          // pop the last element in the array, concat with his chilren
-          ...prev.pop(),
+          key: item.key,
+          title: item.title,
           // recursively call reduceMap to update all children
           children: getMenuList(item.children),
         });
+      }
       return prev;
     }, []);
   }
+
+  // /**
+  //  * @description: This is another way to genrate menu, it will add children node for each parent node
+  //  * @param {*} menuList
+  //  * @return {*}
+  //  */
+  // function getMenuList(menuList) {
+  //   return menuList.reduce((prev, item) => {
+  //     // if no children in the array, simplely add to array end
+  //     prev.push({ key: item.key, title: item.title });
+  //     // if there is child in tree we process it first
+  //     if (item.children)
+  //       // update previous menuNode with concat new children Node
+  //       prev.push({
+  //         // pop the last element in the array, concat with his chilren
+  //         ...prev.pop(),
+  //         // recursively call reduceMap to update all children
+  //         children: getMenuList(item.children),
+  //       });
+  //     return prev;
+  //   }, []);
+  // }
 
   const onCheck = (checkedKeys) => setCheckedKeys(checkedKeys);
 

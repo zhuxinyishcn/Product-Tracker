@@ -6,8 +6,7 @@ import ajax from "./ajax";
 import jsonp from "jsonp";
 import { message } from "antd";
 // a function to login
-export const reqLogin = (username, password) =>
-  ajax("/login", { username, password }, "POST");
+export const reqLogin = (username, password) => ajax("/login", { username, password }, "POST");
 
 // a function to add a user to backend
 export const reqAddUser = (user) => ajax("/manage/user/add", user, "POST");
@@ -30,8 +29,7 @@ export const reqWeather = (city) => {
 };
 
 // a function get tier 1 / tier 2 list from category
-export const reqCategorys = (parentId) =>
-  ajax("/manage/category/list", { parentId });
+export const reqCategorys = (parentId) => ajax("/manage/category/list", { parentId });
 
 // a function to add Categorys to the list
 export const reqAddCategory = ({ parentId, categoryName }) =>
@@ -54,16 +52,14 @@ export const reqSearchProduct = (pageNum, pageSize, searchName, searchType) =>
   });
 
 // a function to get the category from backend use category id
-export const reqCategoryName = (categoryId) =>
-  ajax("/manage/category/info", { categoryId });
+export const reqCategoryName = (categoryId) => ajax("/manage/category/info", { categoryId });
 
 // a function to update the product status though product id
 export const reqUpdateStatus = (productId, status) =>
   ajax("/manage/product/updateStatus", { productId, status }, "POST");
 
 // a function take image name and delete send a image delete request.
-export const reqDeleteImg = (name) =>
-  ajax("/manage/img/delete", { name }, "POST");
+export const reqDeleteImg = (name) => ajax("/manage/img/delete", { name }, "POST");
 
 // This is a function that take product object to add / update a product in the backend
 export const reqAddOrUpdateProduct = (product) =>
@@ -73,9 +69,17 @@ export const reqAddOrUpdateProduct = (product) =>
 export const reqRoles = () => ajax("/manage/role/list");
 
 // This is a  function that send a request to the add a role
-export const reqAddRoles = (roleName) =>
-  ajax("/manage/role/add", { roleName }, "POST");
+export const reqAddRoles = (roleName) => ajax("/manage/role/add", { roleName }, "POST");
 
 // This is a  function that send a request to the update a role
-export const reqUpdateRoles = (role) =>
-  ajax("/manage/role/update", role, "POST");
+export const reqUpdateRoles = (role) => ajax("/manage/role/update", role, "POST");
+
+// This is a function that send a request to get all user
+export const reqUsers = () => ajax("/manage/user/list");
+
+// This is a function that send a request to delete a user
+export const reqDeleteUsers = (userId) => ajax("/manage/user/delete", { userId }, "POST");
+
+// This is a function that send a request to add a new user
+export const reqAddOrUpdateUsers = (user) =>
+  ajax("/manage/user/" + (user._id ? "update" : "add"), user, "POST");

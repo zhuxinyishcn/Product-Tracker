@@ -2,7 +2,7 @@
 
 #### 优先级: 租房, 选课,方向, 简历, GHC
 
-## RESUME
+## RESUME (resumepaper)
 
 #### 身份找实习改写 no need for sponsorship 吗?
 
@@ -173,3 +173,4 @@ PPPS. 我认识了些学长和在读, 之后约了他们 zoom 问问题, 你有�
 2. coop? 
 3. backend technologu
 4. team tech perfer
+5. 5.

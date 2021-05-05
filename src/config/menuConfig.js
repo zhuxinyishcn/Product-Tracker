@@ -12,9 +12,11 @@ import {
 } from "@ant-design/icons";
 const menuList = [
   {
-    title: "Home", // 菜单标题名称
-    key: "/home", // 对应的path
+    title: "Home",
+    key: "/home",
     icon: <HomeOutlined />,
+    // key is default public
+    isPublic: true,
   },
   {
     title: "Products",

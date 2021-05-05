@@ -75,3 +75,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 2. fix setState async issue.
 3. maybe have a array map for detail product
 4. fix product id bug (add-update)
+5. fix user render bug (user-form)

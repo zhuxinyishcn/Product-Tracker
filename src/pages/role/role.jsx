@@ -6,7 +6,8 @@ import AddForm from "./add-from";
 import AuthForm from "./auth-form";
 import { formateDate } from "../../utils/dateUtils";
 import memoryUtils from "../../utils/memoryUtils";
-export default function Role() {
+import storageUtils from "../../utils/storageUtils";
+export default function Role(props) {
   const [columns, setColumns] = useState([]);
   const [roles, setRoles] = useState([]);
   // This a variable to store current selected role
@@ -86,12 +87,19 @@ export default function Role() {
     role.auth_time = Date.now();
     // update auth person
     role.auth_name = memoryUtils.user.username;
+
     const result = await reqUpdateRoles(role);
     if (result.status === 1) message.error("Update Role Failed:(");
     if (result.status === 0) {
       message.success("Update Role Successed!");
+      // if update current role memu authorization, then we force to logout
+      if (role._id === memoryUtils.user.role_id) {
+        memoryUtils.user = {};
+        storageUtils.removeUser();
+        props.history.replace("/login");
+      }
       // update roles array. Since role is in the array, so once role changded, the array also changed.
-      setRoles([...roles]);
+      if (role._id !== memoryUtils.user.role_id) setRoles([...roles]);
     }
   }
 
@@ -147,7 +155,7 @@ export default function Role() {
         visible={showAdd}
         onOk={addRole}
         onCancel={() => {
-          setShowAuth(false);
+          setShowAdd(false);
         }}
       >
         <AddForm ref={FormValues}></AddForm>
