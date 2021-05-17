@@ -1,6 +1,55 @@
-import React, { Component } from "react";
-export default class Bar extends Component {
-  render() {
-    return <div>Bar</div>;
+import React, { useState } from "react";
+import { Card, Button } from "antd";
+import ReactECharts from "echarts-for-react";
+export default function Bar() {
+  const [options, setOptions] = useState({
+    xAxis: {
+      type: "category",
+      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    },
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        data: [150, 230, 224, 218, 135, 147, 260],
+        type: "bar",
+      },
+    ],
+  });
+  function updateGraph() {
+    setOptions({
+      xAxis: {
+        type: "category",
+        data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          data: [15, 20, 24, 218, 135, 147, 26],
+          type: "bar",
+        },
+      ],
+    });
   }
+  return (
+    <div>
+      <Card
+        title={
+          <Button
+            type="primary"
+            onClick={() => {
+              updateGraph();
+            }}
+          >
+            Update Graph
+          </Button>
+        }
+      >
+        <ReactECharts option={options} />
+      </Card>
+    </div>
+  );
 }

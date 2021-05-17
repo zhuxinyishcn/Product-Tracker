@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, forwardRef, useEffect, useState } from "react";
+import React, { useImperativeHandle, forwardRef } from "react";
 import { Form, Input, Select } from "antd";
 import PropTypes from "prop-types";
 
@@ -11,15 +11,6 @@ const WrappedForm = forwardRef(({ roles, user }, ref) => {
     // This is a form instance for parrent component to access
     formInstance: form,
   }));
-
-  /**
-   * @description: This use effect update role checkedKeys whenver use changed
-   * @param {*}
-   * @return {*}
-   */
-  useEffect(() => {
-    console.log(user);
-  }, [roles, user]);
 
   return (
     <Form labelCol={{ span: 6 }} wrapperCol={{ span: 18 }} form={form}>
@@ -52,7 +43,6 @@ const WrappedForm = forwardRef(({ roles, user }, ref) => {
           showSearch
           placeholder="Select a role"
           optionFilterProp="value"
-          // onChange={onChange}
           filterOption={(input, option) =>
             option.value.toLowerCase().indexOf(input.toLowerCase()) >= 0
           }

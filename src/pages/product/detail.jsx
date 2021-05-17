@@ -5,7 +5,7 @@ import { reqCategoryName } from "../../api";
 
 export default function ProductDetail(props) {
   const [mainCategoryName, setMainCategoryName] = useState("");
-  const [childCategoryName, setChildCategoryName] = useState("");
+  const [setChildCategoryName] = useState("");
   const [productDetail, setProductDetail] = useState([]);
 
   useEffect(() => {
@@ -25,10 +25,7 @@ export default function ProductDetail(props) {
     // if the category indicate it is not cate a child category, we first find the main category, then search in the second category
     if (pCategoryId !== "0") {
       // we execute the the promise at once async to improve the peroformance
-      const result = await Promise.all([
-        reqCategoryName(pCategoryId),
-        reqCategoryName(categoryId),
-      ]);
+      const result = await Promise.all([reqCategoryName(pCategoryId), reqCategoryName(categoryId)]);
 
       // check the return result
       if (result[0].status === 0) {
