@@ -5,13 +5,15 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { reqCategorys, reqAddOrUpdateProduct } from "../../api";
 import WrappedPicturesWall from "./pictures-wall";
 import RichTextEditor from "./rich-text-editor";
+import memoryUtils from "../../utils/memoryUtils.js";
+
 export default function ProductAddUpdate(props) {
   // This is a ref for pictureWall
   const pictureWall = useRef(null);
   // This is a ref for richTextEditor
   const richTextEditor = useRef(null);
   const [options, setOptions] = useState([]);
-  const [product] = useState(props.location.state || { product: {} });
+  const [product] = useState(memoryUtils.product || { product: {} });
   const [categoryName, setCategoryName] = useState([]);
 
   useEffect(() => {

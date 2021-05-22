@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Icon, Card, DatePicker, Timeline, Statistic, Row, Col } from "antd";
+import { Icon, Card, DatePicker, Timeline, Statistic, Row } from "antd";
 import moment from "moment";
 import Line from "./line";
 import Bar from "./bar";

@@ -4,7 +4,7 @@ import { AudioOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import LinkButtom from "../../components/link-buttom";
 import { reqProductList, reqSearchProduct, reqUpdateStatus } from "../../api/index";
 import { PAGE_SIZE } from "../../utils/constants";
-
+import memoryUtils from "../../utils/memoryUtils.js";
 const { Option } = Select;
 const { Search } = Input;
 
@@ -77,18 +77,22 @@ export default class Home extends Component {
         key: "action",
         render: (product) => (
           <span>
-            <LinkButtom onClick={() => this.props.history.push("/product/detail", { product })}>
-              Detail
-            </LinkButtom>
-            <LinkButtom onClick={() => this.props.history.push("/product/addupdate", { product })}>
-              Update
-            </LinkButtom>
+            <LinkButtom onClick={() => this.showDetail(product)}>Detail</LinkButtom>
+            <LinkButtom onClick={() => this.showUpdate(product)}>Update</LinkButtom>
           </span>
         ),
       },
     ];
   };
 
+  showDetail(product) {
+    memoryUtils.product = product;
+    this.props.history.push("/product/detail");
+  }
+  showUpdate(product) {
+    memoryUtils.product = product;
+    this.props.history.push("/product/detail");
+  }
   // This is a function
   updateStatus = async (productId, status) => {
     const result = await reqUpdateStatus(productId, status);

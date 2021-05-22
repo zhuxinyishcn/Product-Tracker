@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Card, List } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { reqCategoryName } from "../../api";
+import memoryUtils from "../../utils/memoryUtils.js";
 
 export default function ProductDetail(props) {
   const [mainCategoryName, setMainCategoryName] = useState("");
-  const [setChildCategoryName] = useState("");
+  const [childCategoryName, setChildCategoryName] = useState("");
   const [productDetail, setProductDetail] = useState([]);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function ProductDetail(props) {
   }, [mainCategoryName]);
 
   async function getCategory() {
-    const { product } = props.location.state;
+    const product = memoryUtils.product;
     const { pCategoryId, categoryId } = product;
     // if the category id indicate it is a parent category, we just find the category in the main category
     if (pCategoryId === "0") {
@@ -36,7 +37,7 @@ export default function ProductDetail(props) {
   }
 
   function getProductDetail() {
-    const { product } = props.location.state;
+    const product = memoryUtils.product;
     // load data into correct data form
     const productDetail = [
       {

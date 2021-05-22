@@ -6,6 +6,7 @@ import { Menu, Button } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import menuList from "../../config/menuConfig";
 import memoryUtils from "../../utils/memoryUtils.js";
+
 const { SubMenu } = Menu;
 
 class LeftNav extends Component {
@@ -89,8 +90,10 @@ class LeftNav extends Component {
      * 2. current item is public access item that everyone can see
      * 3. current item has authorization in its role
      */
-    const memuAuthorization = memoryUtils.user.role.menus;
-    const username = memoryUtils.user.username;
+    console.log(memoryUtils.user);
+    const memuAuthorization =
+      memoryUtils.user.role === undefined ? [] : memoryUtils.user.role.menus;
+    const username = memoryUtils.user.username || "";
 
     if (username.includes("admin") || item.isPublic || memuAuthorization.indexOf(item.key) !== -1) {
       return true;

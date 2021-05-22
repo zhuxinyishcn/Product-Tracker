@@ -103,7 +103,26 @@ Registration Opens Summer 2021!
 
 ## Leetcode 情况 (Java)
 
-- 暑假开始刷 (目前准备按照数据结构分类开始刷, 可能看看 youtube 先入门) 准备使用
+[binary search templeate](https://www.1point3acres.com/bbs/thread-747061-1-1.html)
+
+### mock example
+
+1. input parameter
+2. output type
+3. corner case
+4. 2 examples (coner)
+5. time complexicty
+
+| easy             | 记忆化搜索(DFS + 记忆) |
+| ---------------- | ---------------------- |
+| linkedlist, tree | DP                     |
+| DFS              | stack, queue, heap     |
+
+- sliding window, sort, two pointers, graph, bfs, trie, union find
+
+### 灵魂三问
+
+1. [刷题策略](https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=678970&page=6&authorid=682747)
 
 ## Linkedin 勾搭校友,HR 技巧
 
@@ -145,7 +164,7 @@ Website URL: http://23232323.love-neu.com
 
    - 收费停车月租
      - The Parsonage Apartments
-     - **Tempo Apartments
+     - \*\*Tempo Apartments
      - Crane @ Interbay, 3200 16th Ave W
      - Village Vista Apartments
      - Campus View I & II
@@ -166,11 +185,3 @@ Website URL: http://23232323.love-neu.com
 PS. unl 的学妹似乎去了 usc, 可以蹲一波
 PPS. 群里好看的小姐姐似乎蛮多的, 趁现在下手还来得及哈哈, 过去了估计都被吃了哈哈
 PPPS. 我认识了些学长和在读, 之后约了他们 zoom 问问题, 你有啥想问虾图的我也可以顺便问问 -->
-
-
-### Modis 问题
-1. recurtier process, date
-2. coop? 
-3. backend technologu
-4. team tech perfer
-5. 5.

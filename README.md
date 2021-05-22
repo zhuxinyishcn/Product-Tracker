@@ -1,78 +1,46 @@
-# Getting Started with Create React App
+<!--
+ * @Author: Xinyi Zhu
+ * @Date: 2020-04-29 17:29:51
+ * @Email: zhuxinyishcn@outlook.com
+ * @GitHub: https://github.com/zhuxinyishcn
+ * @Description: file info
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-05-19 23:02:49
+ -->
+<h1 align="center"><a href="https://github.com/zhuxinyishcn/Rouge" target="_blank"><strong>📔Rouge</strong></a></h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> This a small community for user to share their notes and new discovery in the life
 
-## Available Scripts
+## Libraries && Implementation
 
-In the project directory, you can run:
+> - [**SpringBoot**](https://spring.io/): Spring makes programming Java quicker, easier, and safer for everybody. Spring’s focus on speed, simplicity, and productivity has made it the world's most popular Java framework.
+> - [**MyBatis**](https://mybatis.org/mybatis-3/index.html): MyBatis is a first class persistence framework with support for custom SQL, stored procedures and advanced mappings. MyBatis eliminates almost all of the JDBC code and manual setting of parameters and retrieval of results. MyBatis can use simple XML or Annotations for configuration and map primitives, Map interfaces and Java POJOs (Plain Old Java Objects) to database records.
+> - [**H2 Database Engine**](https://www.h2database.com/html/main.html):  
+>   1.Very fast, open source, JDBC API  
+>   2.Embedded and server modes; in-memory databases  
+>   3.Browser based Console application  
+>   4.Small footprint: around 2 MB jar file size
+> - [**OAuth**](https://oauth.net/2/): OAuth 2.0 is the industry-standard protocol for authorization. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices
+> - [**BootStrap**](https://getbootstrap.com/): Build responsive, mobile-first projects on the web with the world’s most popular front-end component library.
+> - [**Google cloud Platform**](https://cloud.google.com/): Google cloud Platform: Geocoding API web service is easy to use Take advantage of the Big data that google have
+> - [**OkHttp**](https://square.github.io/okhttp/): HTTP is the way modern applications network. It’s how we exchange data & media. Doing HTTP efficiently makes your stuff load faster and saves bandwidth.
+> - [**Gson**](https://sites.google.com/site/gson/gson-user-guide): It help us better manage the Http response after we sent the get request to Google cloud
+> - [**JUnit**](https://junit.org/junit5/): JUnit is helpful Library t o design and implement a test suite
+> - [**Lombok**](https://projectlombok.org/): Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.
+> - [**Flyway**](https://projectlombok.org/): Version control for your database.Robust schema evolution across all your environments.With ease, pleasure and plain SQL.
 
-### `yarn start`
+## Instructions to build and run the program
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This a small community for users to share their notes and new discovery in life. This is also my first SpringBoot Application and trying to make it publish to both websites and mobile platforms.
 
-### `yarn test`
+## Preview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Browsers
 
-### `yarn build`
+![Chrome](./src/main/resources/images/preview.PNG)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Mobile device
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-### Something you need improve in the future
-
-1. try infinite loop
-2. fix setState async issue.
-3. maybe have a array map for detail product
-4. fix product id bug (add-update)
-5. fix user render bug (user-form)
+![IPhone](./src/main/resources/images/mobilePreview.PNG)
